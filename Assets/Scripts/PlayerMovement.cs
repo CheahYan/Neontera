@@ -80,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
             if (onWall() && !isGrounded())
             {
                 body.gravityScale = 0;
-                body.velocity = Vector2.zero;
+                body.velocity = new Vector2(transform.localScale.x, 0.3f);
             } else
             {
                 body.gravityScale = 3;
@@ -107,11 +107,12 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (onWall() && !isGrounded())
         {
+            ChangeAnmationState(PLAYER_JUMP);
             // Wall grab animation !!
             if (horizontalInput == 0)
             {
                 body.velocity = new Vector2(-Mathf.Sign(transform.localScale.x) * 10, jumpPower);
-                transform.localScale= new Vector3(-Mathf.Sign(transform.localScale.x), transform.localScale.y, transform.localScale.z);
+                transform.localScale= new Vector3(-Mathf.Sign(transform.localScale.x) * 0.3f, transform.localScale.y, transform.localScale.z);
             }
             else
             {
@@ -123,13 +124,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.03f, groundLayer);
         return raycastHit.collider != null;
     }
 
     private bool onWall()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.1f, wallLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x, 0), 0.03f, wallLayer);
         return raycastHit.collider != null;
     }
 
