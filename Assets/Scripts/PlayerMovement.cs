@@ -86,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
                 body.gravityScale = 3;
             }
             // Player jump
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.Space))
             {
                 Jump();
             }
