@@ -15,7 +15,7 @@ public class BasicSlimePatrol : MonoBehaviour
     public LayerMask groundLayer;
     public Collider2D bodyCollider;
     public LayerMask wallLayer;
-    public Transform player;
+    //public Transform player;
     //public GameObject bullet;
 
 
@@ -69,8 +69,9 @@ public class BasicSlimePatrol : MonoBehaviour
 
     void Patrol()
     {
-        if (mustTurn || bodyCollider.IsTouchingLayers(wallLayer)) 
+        if (mustTurn || bodyCollider.IsTouchingLayers(wallLayer) || bodyCollider.IsTouchingLayers(groundLayer)) 
         //if the enemy collides with wall or go to edge of platform, it will flip
+        // have to add condition of groundlayer for the case whereby tiles at the side are ground tiles
         {
             Flip();
         }
@@ -83,7 +84,6 @@ public class BasicSlimePatrol : MonoBehaviour
         mustPatrol = false;
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         walkSpeed *= -1;
-        mustTurn = false;
         mustPatrol = true;
     }
 
