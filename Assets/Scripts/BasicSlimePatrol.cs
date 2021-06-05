@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIPatrol : MonoBehaviour
+public class BasicSlimePatrol : MonoBehaviour
 {
     public float walkSpeed;
     //public float distToPlayer;
