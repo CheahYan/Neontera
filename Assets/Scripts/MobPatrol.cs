@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicSlimePatrol : MonoBehaviour
+public class MobPatrol : MobBasic
 {
-    public float walkSpeed;
+    //public float walkSpeed;
     //public float distToPlayer;
 
     public bool mustPatrol;
     public bool mustTurn;
 
-    public Rigidbody2D rb;
+    //public Rigidbody2D rb;
     public Transform groundCheckPos;
     public LayerMask groundLayer;
     public Collider2D bodyCollider;
